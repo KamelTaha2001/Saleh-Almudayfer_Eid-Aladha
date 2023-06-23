@@ -103,8 +103,8 @@
   
   <br>
   
-  <div id="download-link-container"></div>
-  <!-- <button id="download-btn">Download Image</button>-->
+  <div>في حال ظهور خطأ عند تحميل الصورة حاول فتح الرابط بمتصفح اخر مثل كروم</div>
+  <button id="download-btn">Download Image</button>
 
 
   <script>
@@ -116,44 +116,20 @@
 
         userInput.addEventListener('input', function() {
             overlayText.innerHTML = userInput.value;
-            const imageContainer = document.getElementById('image-container');
-            html2canvas(imageContainer).then(function(canvas) {
-                const image = canvas.toDataURL('image/png');
-                const link = document.createElement('a');
-                link.href = image;
-                link.download = 'text_overlay.png';
-                link.textContent = link.href;
-                
-                const copyButton = document.createElement('button');
-                copyButton.textContent = 'Copy';
-                copyButton.addEventListener('click', function() {
-                    navigator.clipboard.writeText(link.href.substr(0, 40) + '...').then(function() {
-                        console.log('Link copied to clipboard:', link.href.substr(0, 40) + '...');
-                    }).catch(function(error) {
-                        console.error('Unable to copy link to clipboard:', error);
-                    });
-                    copyButton.textContent = 'Copied!';
-
-                });
-                
-                const container = document.getElementById('download-link-container');
-                container.innerHTML = null;
-                container.appendChild(copyButton);
-            });
         });
 
 
-        // downloadButton.addEventListener('click', function() {
-        //     const imageContainer = document.getElementById('image-container');
-        //     html2canvas(imageContainer).then(function(canvas) {
-        //     const image = canvas.toDataURL('image/png');
-        //     const link = document.createElement('a');
-        //     link.href = image;
-        //     link.download = 'text_overlay.png';
-        //     link.target = '_blank';
-        //     link.click();
-        //     });
-        // });
+        downloadButton.addEventListener('click', function() {
+            const imageContainer = document.getElementById('image-container');
+            html2canvas(imageContainer).then(function(canvas) {
+            const image = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = image;
+            link.download = 'text_overlay.png';
+            link.target = '_blank';
+            link.click();
+            });
+        });
     };
   </script>
 </body>
