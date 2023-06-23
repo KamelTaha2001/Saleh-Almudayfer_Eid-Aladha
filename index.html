@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>2تهنئة</title>
+  <title>تهنئة</title>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     body {
@@ -123,9 +123,24 @@
                 link.href = image;
                 link.download = 'text_overlay.png';
                 link.textContent = link.href;
-                // Append the link to a container element on the screen
+                
+                const copyButton = document.createElement('button');
+                copyButton.textContent = 'Copy';
+                copyButton.addEventListener('click', function() {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    copyButton.textContent = 'Copied!';
+
+                });
+                
                 const container = document.getElementById('download-link-container');
-                container.innerHTML = link;
+                container.appendChild(link);
+                container.appendChild(copyButton);
             });
         });
 
