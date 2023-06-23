@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>تهنئة</title>
+  <title>2تهنئة</title>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     body {
@@ -127,8 +127,8 @@
                 const copyButton = document.createElement('button');
                 copyButton.textContent = 'Copy';
                 copyButton.addEventListener('click', function() {
-                    navigator.clipboard.writeText(link.substr(0, maxLength) + '...').then(function() {
-                        console.log('Link copied to clipboard:', link.substr(0, maxLength) + '...');
+                    navigator.clipboard.writeText(link.substr(0, 40) + '...').then(function() {
+                        console.log('Link copied to clipboard:', link.substr(0, 40) + '...');
                     }).catch(function(error) {
                         console.error('Unable to copy link to clipboard:', error);
                     });
