@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>تهنئ2ة</title>
+  <title>تهنئة</title>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     body {
@@ -127,30 +127,10 @@
                 const link = document.createElement('a');
                 link.href = image;
                 link.download = 'text_overlay.png';
+                link.target = '_blank';
                 link.click();
             });
         }
-
-        const imageContainer = document.getElementById('image-container');
-        html2canvas(imageContainer).then(function(canvas) {
-            const image = canvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            link.href = image;
-            link.download = 'text_overlay.png';
-            
-            // Open the link in a new tab to trigger the download
-            link.target = '_blank';
-            
-            // Create a custom event to trigger the click
-            const clickEvent = new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: false
-            });
-    
-            // Dispatch the event to simulate the click
-            link.dispatchEvent(clickEvent);
-        });
 
 
 
