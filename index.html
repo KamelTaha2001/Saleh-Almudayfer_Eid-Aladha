@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>تهنئة</title>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    
+    form {
+      text-align: center;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+    }
+    
+    button[type="submit"] {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #4285F4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #2F76EE;
+    }
+    
+    #image-container {
+      position: relative;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    
+    #overlay-text {
+      position: absolute;
+      top: 69.5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgb(3, 55, 176);
+    }
+    
+    #download-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #4285F4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    #download-btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+  
+</head>
+<body>
+  <h1>Text Overlay</h1>
+  
+  <form id="text-form">
+    <label for="text-input">Enter Text:</label>
+    <input type="text" id="text-input" required>
+  </form>
+  
+  <br>
+  
+  <div id="image-container">
+    <img id="background-image" src="test.png" alt="Background Image">
+    <div id="overlay-text"></div>
+  </div>
+  
+  <br>
+  
+  <button id="download-btn" disabled>Download Image</button>
+
+  <script>
+    window.onload = function() {
+        const textForm = document.getElementById('text-form');
+        const overlayText = document.getElementById('overlay-text');
+        const downloadButton = document.getElementById('download-btn');
+        const userInput = document.getElementById('text-input')
+        downloadButton.disabled = false;
+
+        userInput.addEventListener('input', function() {
+            overlayText.innerHTML = userInput.value;
+        });
+        
+
+        downloadButton.addEventListener('click', function() {
+            const imageContainer = document.getElementById('image-container');
+            html2canvas(imageContainer).then(function(canvas) {
+            const image = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = image;
+            link.download = 'text_overlay.png';
+            link.click();
+            });
+        });
+    };
+  </script>
+</body>
+</html>
