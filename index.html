@@ -104,7 +104,8 @@
   
   <br>
   
-  <button id="download-btn" disabled>Download Image</button>
+  <button id="download-btn" onclick="downloadImage()">Download Image</button>
+
 
   <script>
     window.onload = function() {
@@ -119,7 +120,41 @@
         });
         
 
-        downloadButton.addEventListener('click', function() {
+        function downloadImage() {
+            const imageContainer = document.getElementById('image-container');
+            html2canvas(imageContainer).then(function(canvas) {
+                const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+                const link = document.createElement('a');
+                link.href = image;
+                link.download = 'text_overlay.png';
+                link.click();
+            });
+        }
+
+        const imageContainer = document.getElementById('image-container');
+        html2canvas(imageContainer).then(function(canvas) {
+            const image = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = image;
+            link.download = 'text_overlay.png';
+            
+            // Open the link in a new tab to trigger the download
+            link.target = '_blank';
+            
+            // Create a custom event to trigger the click
+            const clickEvent = new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: false
+            });
+    
+            // Dispatch the event to simulate the click
+            link.dispatchEvent(clickEvent);
+        });
+
+
+
+        /*downloadButton.addEventListener('click', function() {
             const imageContainer = document.getElementById('image-container');
             html2canvas(imageContainer).then(function(canvas) {
             const image = canvas.toDataURL('image/png');
@@ -128,7 +163,7 @@
             link.download = 'text_overlay.png';
             link.click();
             });
-        });
+        });*/
     };
   </script>
 </body>
