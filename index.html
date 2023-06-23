@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>2تهنئة</title>
+  <title>تهنئة</title>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     body {
@@ -116,23 +116,19 @@
 
         userInput.addEventListener('input', function() {
             overlayText.innerHTML = userInput.value;
+            const imageContainer = document.getElementById('image-container');
+            html2canvas(imageContainer).then(function(canvas) {
+                const image = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.href = image;
+                link.download = 'text_overlay.png';
+                link.textContent = link.href;
+            });
+            // Append the link to a container element on the screen
+            const container = document.getElementById('download-link-container');
+            container.innerHTML = link;
         });
 
-        
-        function displayDownloadLink() {
-  const imageContainer = document.getElementById('image-container');
-  html2canvas(imageContainer).then(function(canvas) {
-    const image = canvas.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = image;
-    link.download = 'text_overlay.png';
-    link.textContent = link.href;
-    
-    // Append the link to a container element on the screen
-    const container = document.getElementById('download-link-container');
-    container.innerHTML = link;
-  });
-}
 
         // downloadButton.addEventListener('click', function() {
         //     const imageContainer = document.getElementById('image-container');
