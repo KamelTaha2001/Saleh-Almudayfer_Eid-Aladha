@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>تهنئة</title>
+  <title>2تهنئة</title>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     body {
@@ -103,7 +103,7 @@
   
   <br>
   
-  <p id="download-link-container"></p>
+  <div id="download-link-container"></div>
   <!-- <button id="download-btn">Download Image</button>-->
 
 
@@ -139,8 +139,7 @@
                 });
                 
                 const container = document.getElementById('download-link-container');
-                container.appendChild(link);
-                container.appendChild(copyButton);
+                container.innerHTML = copyButton;
             });
         });
 
