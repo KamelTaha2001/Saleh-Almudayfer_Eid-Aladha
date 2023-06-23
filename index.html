@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>تهنئة</title>
+  <title>2تهنئة</title>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     body {
@@ -86,7 +86,22 @@
       cursor: not-allowed;
     }
   </style>
-  
+  <script>
+    function displayDownloadLink() {
+  const imageContainer = document.getElementById('image-container');
+  html2canvas(imageContainer).then(function(canvas) {
+    const image = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = image;
+    link.download = 'text_overlay.png';
+    link.textContent = link.href;
+    
+    // Append the link to a container element on the screen
+    const container = document.getElementById('download-link-container');
+    container.innerHTML = link;
+  });
+}
+  </script>
 </head>
 <body>
   <h1>:الاسم</h1>
@@ -104,7 +119,8 @@
   
   <br>
   
-  <button id="download-btn">Download Image</button>
+  <p id="download-link-container"></p>
+  <!-- <button id="download-btn">Download Image</button>-->
 
 
   <script>
@@ -119,19 +135,20 @@
             overlayText.innerHTML = userInput.value;
         });
 
+        
 
-        downloadButton.addEventListener('click', function() {
-            // const imageContainer = document.getElementById('image-container');
-            // html2canvas(imageContainer).then(function(canvas) {
-            // const image = canvas.toDataURL('image/png');
-            // const link = document.createElement('a');
-            // link.href = image;
-            // link.download = 'text_overlay.png';
-            // link.target = '_blank';
-            // link.click();
-            //});
-            window.location.href = "https://www.google.com";
-        });
+
+        // downloadButton.addEventListener('click', function() {
+        //     const imageContainer = document.getElementById('image-container');
+        //     html2canvas(imageContainer).then(function(canvas) {
+        //     const image = canvas.toDataURL('image/png');
+        //     const link = document.createElement('a');
+        //     link.href = image;
+        //     link.download = 'text_overlay.png';
+        //     link.target = '_blank';
+        //     link.click();
+        //     });
+        // });
     };
   </script>
 </body>
