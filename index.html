@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>تهنئة</title>
+  <title>2تهنئة</title>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     body {
@@ -123,10 +123,10 @@
                 link.href = image;
                 link.download = 'text_overlay.png';
                 link.textContent = link.href;
+                // Append the link to a container element on the screen
+                const container = document.getElementById('download-link-container');
+                container.innerHTML = link;
             });
-            // Append the link to a container element on the screen
-            const container = document.getElementById('download-link-container');
-            container.innerHTML = link;
         });
 
 
