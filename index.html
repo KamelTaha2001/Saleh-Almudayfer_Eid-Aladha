@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>تهنئة</title>
+  <title>2تهنئة</title>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     body {
@@ -120,24 +120,24 @@
         });
         
 
-        function downloadImage() {
-            print("hi");
-            const imageContainer = document.getElementById('image-container');
-            print("hi");
-            html2canvas(imageContainer).then(function(canvas) {
-                const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-                const link = document.createElement('a');
-                link.href = image;
-                link.download = 'text_overlay.png';
-                link.target = '_blank';
-                link.click();
-            });
-            print("hi");
-        }
+        // function downloadImage() {
+        //     print("hi");
+        //     const imageContainer = document.getElementById('image-container');
+        //     print("hi");
+        //     html2canvas(imageContainer).then(function(canvas) {
+        //         const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+        //         const link = document.createElement('a');
+        //         link.href = image;
+        //         link.download = 'text_overlay.png';
+        //         link.target = '_blank';
+        //         link.click();
+        //     });
+        //     print("hi");
+        // }
 
 
 
-        /*downloadButton.addEventListener('click', function() {
+        downloadButton.addEventListener('click', function() {
             const imageContainer = document.getElementById('image-container');
             html2canvas(imageContainer).then(function(canvas) {
             const image = canvas.toDataURL('image/png');
@@ -146,7 +146,7 @@
             link.download = 'text_overlay.png';
             link.click();
             });
-        });*/
+        });
     };
   </script>
 </body>
